@@ -23,13 +23,15 @@
     "noStrictGenericChecks": true
   },
   "files": [
-    "index.ts"
+    "index.ts",
+    "AddressBook.ts",
+    "IContact.ts"
   ],
   "exclude": [
     "node_modules",
     "build"
   ],
   "include": [
-    "src/**/*.ts"
+    "./**/*.ts"
   ]
 }
