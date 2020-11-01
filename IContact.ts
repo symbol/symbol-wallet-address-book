@@ -1,5 +1,7 @@
 export interface IContact {
     /** Unique field / identifier */
+    id: string,
+    /** Address: Required */
     address: string,
     /** Name: Required */
     name: string,

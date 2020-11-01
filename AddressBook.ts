@@ -2,23 +2,38 @@ import {IContact} from "./IContact";
 
 export class AddressBook {
     /** Contacts index */
-    contacts: {[address: string]: IContact}
+    contacts: {[id: string]: IContact}
     /** Address book version */
     static version = 1;
 
     constructor(contacts: IContact[] = []) {
         this.contacts = contacts.reduce( (acc, contact) => {
-            acc[uglifyAddress(contact.address)] = contact;
+            acc[contact.id] = contact;
             return acc;
         }, {});
     }
 
     /**
      * Get all contacts by a given address
+     */
+    getAllContacts() {
+        return Object.values(this.contacts);
+    }
+
+    /**
+     * Get all contacts by it's id
+     * @param id
+     */
+    getContactById(id: string): IContact  | undefined {
+        return this.contacts[id];
+    }
+
+    /**
+     * Get all contacts by a given address
      * @param address
      */
-    getAllByAddress(address: string) {
-        Object.values(this.contacts).filter(contact => address === contact.address);
+    getContactByAddress(address: string): IContact  | undefined {
+        return Object.values(this.contacts).find( c => c.address === address || uglifyAddress(c.address) === uglifyAddress(address));
     }
 
     /**
@@ -26,27 +41,28 @@ export class AddressBook {
      * @param contact
      */
     addContact(contact: IContact): IContact {
-        this.contacts[uglifyAddress(contact.address)] = contact;
-        return this.contacts[uglifyAddress(contact.address)];
+        contact.id = uuidv4();
+        this.contacts[contact.id] = contact;
+        return contact;
     }
 
     /**
-     * Remove contact by its address
-     * @param address
+     * Remove contact by its id
+     * @param id
      */
-    removeContact(address: string): IContact[] {
-        delete this.contacts[uglifyAddress(address)];
+    removeContact(id: string): IContact[] {
+        delete this.contacts[id];
         return Object.values(this.contacts);
     }
 
     /**
-     * Update a contact by its address
-     * @param address
+     * Update a contact by id
+     * @param id
      * @param newContact
      */
-    updateContact(address: string, newContact: IContact): IContact {
-        this.removeContact(address);
-        return this.addContact(newContact);
+    updateContact(id: string, newContact: IContact): IContact {
+        this.contacts[id] = newContact;
+        return newContact;
     }
 
     /**
@@ -83,7 +99,7 @@ export class AddressBook {
         }
         const addressBook = new AddressBook();
         for (let contact of obj.contacts) {
-            if (!contact.hasOwnProperty('name') || !contact.hasOwnProperty('address')) {
+            if (!contact.hasOwnProperty('id') || !contact.hasOwnProperty('name') || !contact.hasOwnProperty('address')) {
                 throw new Error("Error creating AddressBook: contact has an invalid format");
             }
             addressBook.addContact(contact);
@@ -98,4 +114,11 @@ export class AddressBook {
  */
 const uglifyAddress = (address: string) => {
     return address.replace(/-/g, '');
+}
+
+const uuidv4 = (): string => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
