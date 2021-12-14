@@ -1,16 +1,18 @@
 {
   "name": "symbol-address-book",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Symbol address book library",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": {
-    "name": "Peersyst Technology",
-    "email": "dev@peersyst.com"
+    "name": "The Symbol Syndicate",
+    "email": "contributors@symbol.dev"
   },
   "bugs": {
     "url": "https://github.com/nemgrouplimited/symbol-wallet-address-book/issues"
@@ -21,9 +23,12 @@
   },
   "homepage": "https://github.com/nemgrouplimited/symbol-wallet-address-book#readme",
   "dependencies": {
+    "ts-jest": "^27.1.1",
     "typescript": "^3.7.4"
   },
   "devDependencies": {
-    "@types/node": "^13.1.7"
+    "@types/jest": "^27.0.3",
+    "@types/node": "^13.1.7",
+    "jest": "^27.4.5"
   }
 }

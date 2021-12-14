@@ -32,6 +32,7 @@
     "build"
   ],
   "include": [
-    "./**/*.ts"
+    "./**/*.ts",
+    "jest.config.js"
   ]
 }
