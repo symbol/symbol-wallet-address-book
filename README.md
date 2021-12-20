@@ -25,6 +25,7 @@ addressBook.addContact({
     email: 'bob@nemgroup.software',
     label: 'Executive team',
     notes: 'A very good friend',
+    isBlackListed: false,
 });
 
 const json = addressBook.toJSON(true);
