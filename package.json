@@ -15,13 +15,13 @@
     "email": "contributors@symbol.dev"
   },
   "bugs": {
-    "url": "https://github.com/nemgrouplimited/symbol-wallet-address-book/issues"
+    "url": "https://github.com/symbol/symbol-wallet-address-book/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nemgrouplimited/symbol-wallet-address-book.git"
+    "url": "git+https://github.com/symbol/symbol-wallet-address-book.git"
   },
-  "homepage": "https://github.com/nemgrouplimited/symbol-wallet-address-book#readme",
+  "homepage": "https://github.com/symbol/symbol-wallet-address-book#readme",
   "dependencies": {
     "ts-jest": "^27.1.1",
     "typescript": "^3.7.4"

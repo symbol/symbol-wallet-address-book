@@ -22,7 +22,7 @@ addressBook.addContact({
     address: 'TAVVVJBBCTYJDWC7TQPSVNHK2IPNY6URKK4DTHY',
     name: 'Bob',
     phone: '+34 000000000',
-    email: 'bob@nemgroup.software',
+    email: 'bob@symbol.dev',
     label: 'Executive team',
     notes: 'A very good friend',
     isBlackListed: false,
